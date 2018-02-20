@@ -1,0 +1,26 @@
+<h2 align="center">Title:<%= @article.title %> </h2>
+
+<div class="well col-xs-8 col-xs-offset-2 center">
+    <h3 class="description">Text</h3>
+    <hr>
+        <%= simple_format(@article.text) %>
+    </hr>
+    <div class="col center">
+        <div class="article-actions">
+            <%= link_to 'Edit Article', edit_article_path(@article), class: "btn btn-xs btn-primary" %> |
+            <%= link_to 'Back to Articles', articles_path, class: "btn btn-xs btn-success" %> |
+            <%= link_to 'Delete article', article_path(@article),
+                                            method: :delete,
+                                            data: {confirm: "Are you sure?"},
+                                            class: "btn btn-xs btn-danger" %>
+        </div>
+    </div>
+</div>
+
+<div class="well col-xs-8 col-xs-offset-2">
+    <h2>Comments</h2>
+    <%= render @article.comments %>
+
+    <h2>Add a comment:</h2>
+    <%= render "comments/form" %>
+</div>
